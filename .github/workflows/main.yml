@@ -1,0 +1,25 @@
+name: Run ELF File
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set execute permissions for ELF file
+      run: chmod +x ./0x1.elf
+    - name: Run the ELF file
+      run: ./0x1.elf
+
+    - name: Verify execution
+      run: echo "ELF file executed successfully"
